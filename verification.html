@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificando Credenciales</title>
+  <link rel="stylesheet" href="verification.css">
+</head>
+<body>
+  <div class="verification-container">
+    <div class="spinner"></div>
+    <h1>Estamos verificando su información<br>por favor espere un momento...</h1>
+  </div>
+
+  <!-- Redirección automática después de 3 segundos -->
+  <script>
+    setTimeout(function() {
+      window.location.href = 'atencion-al-cliente.html';
+    }, 3000); // 3000 milisegundos = 3 segundos
+  </script>
+</body>
+</html>
