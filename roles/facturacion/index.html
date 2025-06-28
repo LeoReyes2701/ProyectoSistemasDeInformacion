@@ -3,16 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facturación</title>
+    <title>Sistema de Facturación Automatizado</title>
     <link rel="stylesheet" href="facturacion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Facturación</h1>
-        <div class="invoice-form">
-            <input type="text" placeholder="Cliente">
-            <button>Generar Factura</button>
-        </div>
+    <div class="facturacion-container">
+        <!-- Header -->
+        <header class="facturacion-header">
+            <h1><i class="fas fa-file-invoice-dollar"></i> Sistema de Facturación Automatizado</h1>
+            <div class="periodo-selector">
+                <select id="periodo">
+                    <option>Junio 2023</option>
+                    <option>Mayo 2023</option>
+                    <option>Abril 2023</option>
+                </select>
+            </div>
+        </header>
+
+        <!-- Panel de Control -->
+        <section class="control-panel">
+            <div class="panel-card">
+                <div class="panel-icon integration">
+                    <i class="fas fa-plug"></i>
+                </div>
+                <h3>Integración con Sistemas</h3>
+                <p>Conexión automática con medidores y sistemas de consumo</p>
+                <button class="panel-btn">Configurar</button>
+            </div>
+
+            <div class="panel-card">
+                <div class="panel-icon batch">
+                    <i class="fas fa-copy"></i>
+                </div>
+                <h3>Generación Masiva</h3>
+                <p>Procesamiento por lotes de facturas pendientes</p>
+                <button class="panel-btn">Ejecutar</button>
+            </div>
+
+            <div class="panel-card">
+                <div class="panel-icon notification">
+                    <i class="fas fa-paper-plane"></i>
+                </div>
+                <h3>Envío Automatizado</h3>
+                <p>Distribución vía correo electrónico y SMS</p>
+                <button class="panel-btn">Programar</button>
+            </div>
+
+            <div class="panel-card">
+                <div class="panel-icon portal">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h3>Portal de Clientes</h3>
+                <p>Acceso en línea a estados de cuenta</p>
+                <button class="panel-btn">Administrar</button>
+            </div>
+        </section>
+
+        <!-- Sección de Procesamiento -->
+        <section class="processing-section">
+            <div class="processing-header">
+                <h2><i class="fas fa-tasks"></i> Procesamiento de Facturas</h2>
+                <button class="primary-btn large">
+                    <i class="fas fa-play-circle"></i> Ejecutar Ciclo Completo
+                </button>
+            </div>
+
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Extracción de Datos</h4>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 92%"></div>
+                        </div>
+                        <p>92% completado (1,842/2,000 clientes)</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Generación de Facturas</h4>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 45%"></div>
+                        </div>
+                        <p>45% completado (900/2,000 facturas)</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Distribución Automatizada</h4>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 18%"></div>
+                        </div>
+                        <p>18% completado (360/2,000 envíos)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resumen de Facturación -->
+        <section class="billing-summary">
+            <div class="summary-header">
+                <h2><i class="fas fa-chart-pie"></i> Resumen del Período</h2>
+                <div class="summary-actions">
+                    <button class="outline-btn">
+                        <i class="fas fa-download"></i> Exportar
+                    </button>
+                    <button class="outline-btn">
+                        <i class="fas fa-print"></i> Imprimir
+                    </button>
+                </div>
+            </div>
+
+            <div class="summary-grid">
+                <div class="metric-card">
+                    <div class="metric-value">$248,750</div>
+                    <div class="metric-label">Total Facturado</div>
+                    <div class="metric-trend up">
+                        <i class="fas fa-arrow-up"></i> 12.5%
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-value">1,842</div>
+                    <div class="metric-label">Facturas Generadas</div>
+                    <div class="metric-trend up">
+                        <i class="fas fa-arrow-up"></i> 8.3%
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-value">94.7%</div>
+                    <div class="metric-label">Éxito en Envíos</div>
+                    <div class="metric-trend down">
+                        <i class="fas fa-arrow-down"></i> 1.2%
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-value">72.8%</div>
+                    <div class="metric-label">Pagos Recibidos</div>
+                    <div class="metric-trend up">
+                        <i class="fas fa-arrow-up"></i> 3.1%
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Listado de Facturas -->
+        <section class="invoice-list-section">
+            <div class="list-header">
+                <h2><i class="fas fa-list-ol"></i> Facturas Recientes</h2>
+                <div class="list-actions">
+                    <input type="text" placeholder="Buscar factura...">
+                    <button class="outline-btn">
+                        <i class="fas fa-filter"></i> Filtros
+                    </button>
+                </div>
+            </div>
+
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>Factura #</th>
+                        <th>Cliente</th>
+                        <th>Fecha</th>
+                        <th>Monto</th>
+                        <th>Estado</th>
+                        <th>Envío</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>FAC-2023-00158</td>
+                        <td>Empresa XYZ, C.A.</td>
+                        <td>05/06/2023</td>
+                        <td>$1,250.00</td>
+                        <td><span class="status-badge paid">Pagada</span></td>
+                        <td><i class="fas fa-check-circle success"></i> Email</td>
+                        <td>
+                            <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                            <button class="action-btn resend"><i class="fas fa-paper-plane"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>FAC-2023-00157</td>
+                        <td>Juan Pérez</td>
+                        <td>05/06/2023</td>
+                        <td>$85.00</td>
+                        <td><span class="status-badge pending">Pendiente</span></td>
+                        <td><i class="fas fa-check-circle success"></i> SMS</td>
+                        <td>
+                            <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                            <button class="action-btn resend"><i class="fas fa-paper-plane"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>FAC-2023-00156</td>
+                        <td>María González</td>
+                        <td>05/06/2023</td>
+                        <td>$120.00</td>
+                        <td><span class="status-badge overdue">Vencida</span></td>
+                        <td><i class="fas fa-exclamation-triangle warning"></i> Falló</td>
+                        <td>
+                            <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                            <button class="action-btn resend"><i class="fas fa-paper-plane"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="table-footer">
+                <div class="pagination">
+                    <button class="pagination-btn"><i class="fas fa-chevron-left"></i></button>
+                    <span class="current-page">1</span>
+                    <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="results-count">Mostrando 1-10 de 1,842 facturas</div>
+            </div>
+        </section>
     </div>
+
+    <!-- <script>
+        // Simulación de funcionalidad de los botones principales
+        document.querySelectorAll('.panel-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const cardTitle = this.closest('.panel-card').querySelector('h3').textContent;
+                alert(`Iniciando proceso: ${cardTitle}`);
+            });
+        });
+
+        // Ejecutar ciclo completo
+        document.querySelector('.primary-btn.large').addEventListener('click', function() {
+            alert('Iniciando ciclo completo de facturación:\n1. Extracción de datos\n2. Generación de facturas\n3. Distribución automatizada');
+        });
+    </script> -->
 </body>
 </html>

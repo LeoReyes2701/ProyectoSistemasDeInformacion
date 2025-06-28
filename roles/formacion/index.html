@@ -3,18 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formación</title>
+    <title>Plataforma de Formación | ConectaPlus</title>
     <link rel="stylesheet" href="formacion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Formación de Empleados</h1>
-        <div class="course-list">
-            <div class="course">
-                <h3>Curso: Liderazgo</h3>
-                <button>Asignar</button>
+    <div class="training-container">
+        <!-- Header -->
+        <header class="training-header">
+            <div class="header-content">
+                <h1><i class="fas fa-graduation-cap"></i> Plataforma de Formación</h1>
+                <p class="time-saved"><i class="fas fa-clock"></i> <strong>10 horas</strong> ahorradas este mes en gestión manual</p>
             </div>
-        </div>
+            <div class="header-actions">
+                <button class="primary-btn"><i class="fas fa-plus"></i> Nuevo Curso</button>
+                <button class="outline-btn"><i class="fas fa-file-export"></i> Generar Reporte</button>
+            </div>
+        </header>
+
+        <!-- Estadísticas Rápidas -->
+        <section class="quick-stats">
+            <div class="stat-card">
+                <div class="stat-icon completion">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Cursos Completados</h3>
+                    <div class="stat-value">142</div>
+                    <div class="stat-trend up"><i class="fas fa-arrow-up"></i> 18% vs mes anterior</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon pending">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>En Progreso</h3>
+                    <div class="stat-value">68</div>
+                    <div class="stat-trend up"><i class="fas fa-arrow-up"></i> 7% vs mes anterior</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon compliance">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Cumplimiento</h3>
+                    <div class="stat-value">82%</div>
+                    <div class="stat-trend up"><i class="fas fa-arrow-up"></i> 5% vs mes anterior</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catálogo de Cursos -->
+        <section class="catalog-section">
+            <div class="section-header">
+                <h2><i class="fas fa-book-open"></i> Catálogo de Cursos</h2>
+                <div class="catalog-filters">
+                    <select class="filter-select">
+                        <option>Todas las categorías</option>
+                        <option>Tecnología</option>
+                        <option>Atención al Cliente</option>
+                        <option>Gestión</option>
+                    </select>
+                    <input type="text" placeholder="Buscar curso...">
+                </div>
+            </div>
+
+            <div class="course-grid">
+                <div class="course-card mandatory">
+                    <div class="course-badge">Obligatorio</div>
+                    <div class="course-image tech"></div>
+                    <div class="course-content">
+                        <h3>Seguridad Informática 2023</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 8 horas</span>
+                            <span><i class="fas fa-user-tie"></i> Todos los roles</span>
+                        </div>
+                        <div class="course-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 65%"></div>
+                            </div>
+                            <span>65% completado (43/65 empleados)</span>
+                        </div>
+                        <div class="course-actions">
+                            <button class="course-btn assign"><i class="fas fa-user-plus"></i> Asignar</button>
+                            <button class="course-btn details"><i class="fas fa-eye"></i> Detalles</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image service"></div>
+                    <div class="course-content">
+                        <h3>Excelencia en Servicio</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 6 horas</span>
+                            <span><i class="fas fa-user-tie"></i> Atención al Cliente</span>
+                        </div>
+                        <div class="course-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 92%"></div>
+                            </div>
+                            <span>92% completado (35/38 empleados)</span>
+                        </div>
+                        <div class="course-actions">
+                            <button class="course-btn assign"><i class="fas fa-user-plus"></i> Asignar</button>
+                            <button class="course-btn details"><i class="fas fa-eye"></i> Detalles</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card new">
+                    <div class="course-badge">Nuevo</div>
+                    <div class="course-image leadership"></div>
+                    <div class="course-content">
+                        <h3>Liderazgo Ágil</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 10 horas</span>
+                            <span><i class="fas fa-user-tie"></i> Supervisores</span>
+                        </div>
+                        <div class="course-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 15%"></div>
+                            </div>
+                            <span>15% completado (3/20 empleados)</span>
+                        </div>
+                        <div class="course-actions">
+                            <button class="course-btn assign"><i class="fas fa-user-plus"></i> Asignar</button>
+                            <button class="course-btn details"><i class="fas fa-eye"></i> Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Asignación Automática -->
+        <section class="auto-assignment">
+            <div class="section-header">
+                <h2><i class="fas fa-robot"></i> Asignación Automática por Rol</h2>
+                <button class="outline-btn"><i class="fas fa-question-circle"></i> Ayuda</button>
+            </div>
+
+            <div class="assignment-rules">
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Atención al Cliente</h3>
+                        <ul class="rule-courses">
+                            <li>Excelencia en Servicio (anual)</li>
+                            <li>Manejo de Objeciones (semestral)</li>
+                            <li>CRM Básico (única vez)</li>
+                        </ul>
+                    </div>
+                    <button class="rule-btn"><i class="fas fa-edit"></i> Configurar</button>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Facturación</h3>
+                        <ul class="rule-courses">
+                            <li>Normativas Tributarias (anual)</li>
+                            <li>Uso de ERP (única vez)</li>
+                        </ul>
+                    </div>
+                    <button class="rule-btn"><i class="fas fa-edit"></i> Configurar</button>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="rule-content">
+                        <h3>Tecnología</h3>
+                        <ul class="rule-courses">
+                            <li>Seguridad Informática (anual)</li>
+                            <li>Actualización de Sistemas (trimestral)</li>
+                        </ul>
+                    </div>
+                    <button class="rule-btn"><i class="fas fa-edit"></i> Configurar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reportes de Formación -->
+        <section class="reports-section">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-pie"></i> Reportes de Formación</h2>
+                <div class="report-actions">
+                    <select class="report-select">
+                        <option>Reporte de Cumplimiento</option>
+                        <option>Participación por Departamento</option>
+                        <option>Historial por Empleado</option>
+                    </select>
+                    <button class="primary-btn"><i class="fas fa-download"></i> Generar</button>
+                </div>
+            </div>
+
+            <div class="report-preview">
+                <div class="report-filters">
+                    <div class="filter-group">
+                        <label for="department"><i class="fas fa-building"></i> Departamento:</label>
+                        <select id="department">
+                            <option>Todos</option>
+                            <option>Atención al Cliente</option>
+                            <option>Facturación</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="period"><i class="fas fa-calendar"></i> Período:</label>
+                        <select id="period">
+                            <option>Últimos 30 días</option>
+                            <option>Este trimestre</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="report-visualization">
+                    <div class="compliance-chart">
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-bar"></i>
+                            <p>Visualización del reporte seleccionado</p>
+                        </div>
+                    </div>
+                    <div class="report-summary">
+                        <h3>Resumen Ejecutivo</h3>
+                        <ul class="summary-list">
+                            <li><strong>85%</strong> de cursos obligatorios completados</li>
+                            <li><strong>3.2</strong> días promedio para completar cursos</li>
+                            <li><strong>92%</strong> de satisfacción reportada</li>
+                        </ul>
+                        <button class="outline-btn full-width"><i class="fas fa-user-graduate"></i> Ver Detalle por Empleado</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progreso de Empleados -->
+        <section class="employee-progress">
+            <div class="section-header">
+                <h2><i class="fas fa-user-graduate"></i> Progreso Individual</h2>
+                <div class="employee-search">
+                    <input type="text" placeholder="Buscar empleado...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <div class="progress-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Empleado</th>
+                            <th>Cursos Asignados</th>
+                            <th>Completados</th>
+                            <th>Progreso</th>
+                            <th>Certificados</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="employee-info">
+                                    <div class="employee-avatar">MG</div>
+                                    <span>María González</span>
+                                </div>
+                            </td>
+                            <td>5</td>
+                            <td>3</td>
+                            <td>
+                                <div class="progress-bar small">
+                                    <div class="progress" style="width: 60%"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <button class="certificate-btn"><i class="fas fa-award"></i> Ver</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="employee-info">
+                                    <div class="employee-avatar">JP</div>
+                                    <span>Juan Pérez</span>
+                                </div>
+                            </td>
+                            <td>4</td>
+                            <td>4</td>
+                            <td>
+                                <div class="progress-bar small">
+                                    <div class="progress" style="width: 100%"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <button class="certificate-btn"><i class="fas fa-award"></i> Ver</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </div>
 </body>
 </html>

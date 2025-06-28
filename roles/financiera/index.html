@@ -3,18 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financiera</title>
+    <title>Dashboard Financiero | ConectaPlus</title>
     <link rel="stylesheet" href="financiera.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Gestión Financiera</h1>
-        <div class="finance-data">
-            <div class="balance">
-                <h3>Balance General</h3>
-                <button>Ver Detalles</button>
+    <div class="finance-container">
+        <!-- Header -->
+        <header class="finance-header">
+            <div class="header-title">
+                <h1><i class="fas fa-chart-line"></i> Dashboard Financiero</h1>
+                <p class="last-update"><i class="fas fa-sync-alt"></i> Actualizado hace 2 min</p>
             </div>
-        </div>
+            <div class="time-filters">
+                <button class="time-btn active">Hoy</button>
+                <button class="time-btn">Semana</button>
+                <button class="time-btn">Mes</button>
+                <button class="time-btn">Personalizado</button>
+            </div>
+        </header>
+
+        <!-- Alertas y KPIs -->
+        <section class="alerts-section">
+            <div class="alert-card critical">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <h3>3 Cuentas por Cobrar Vencidas</h3>
+                    <p>Total: $12,850.00</p>
+                </div>
+                <button class="alert-btn">Ver Detalles</button>
+            </div>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-value">$248,750</div>
+                    <div class="kpi-label">Ingresos Mensuales</div>
+                    <div class="kpi-trend up"><i class="fas fa-arrow-up"></i> 12.5%</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">$185,200</div>
+                    <div class="kpi-label">Egresos Mensuales</div>
+                    <div class="kpi-trend down"><i class="fas fa-arrow-down"></i> 3.2%</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">72.8%</div>
+                    <div class="kpi-label">Eficiencia Cobranza</div>
+                    <div class="kpi-trend up"><i class="fas fa-arrow-up"></i> 5.1%</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">94.7%</div>
+                    <div class="kpi-label">Conf. Datos</div>
+                    <div class="kpi-trend stable"><i class="fas fa-equals"></i> 0.5%</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flujo de Caja en Tiempo Real -->
+        <section class="cashflow-section">
+            <div class="section-header">
+                <h2><i class="fas fa-money-bill-wave"></i> Flujo de Caja - Semana 24</h2>
+                <div class="section-actions">
+                    <button class="export-btn"><i class="fas fa-file-export"></i> Exportar</button>
+                    <button class="refresh-btn"><i class="fas fa-sync-alt"></i> Actualizar</button>
+                </div>
+            </div>
+            <div class="cashflow-content">
+                <div class="cashflow-chart">
+                    <canvas id="cashflowChart"></canvas>
+                </div>
+                <div class="cashflow-details">
+                    <div class="detail-card">
+                        <h3>Ingresos</h3>
+                        <div class="detail-value positive">+ $62,450.00</div>
+                        <div class="detail-breakdown">
+                            <p><span class="dot services"></span> Servicios: $58,200.00</p>
+                            <p><span class="dot other"></span> Otros: $4,250.00</p>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <h3>Egresos</h3>
+                        <div class="detail-value negative">- $46,300.00</div>
+                        <div class="detail-breakdown">
+                            <p><span class="dot payroll"></span> Nómina: $28,750.00</p>
+                            <p><span class="dot suppliers"></span> Proveedores: $17,550.00</p>
+                        </div>
+                    </div>
+                    <div class="detail-card total">
+                        <h3>Flujo Neto</h3>
+                        <div class="detail-value positive">+ $16,150.00</div>
+                        <div class="detail-meta">
+                            <p>Saldo Proyectado: $142,800.00</p>
+                            <p>Días Liquidez: 23 días</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reportes Integrados -->
+        <section class="reports-section">
+            <div class="section-header">
+                <h2><i class="fas fa-file-alt"></i> Reportes Financieros</h2>
+                <div class="report-filters">
+                    <select class="report-select">
+                        <option>Todos los reportes</option>
+                        <option>Estados Financieros</option>
+                        <option>Flujo de Caja</option>
+                        <option>Cobranza</option>
+                    </select>
+                    <button class="generate-btn"><i class="fas fa-plus"></i> Nuevo Reporte</button>
+                </div>
+            </div>
+            <div class="reports-grid">
+                <div class="report-card">
+                    <div class="report-icon"><i class="fas fa-balance-scale"></i></div>
+                    <div class="report-content">
+                        <h3>Estado de Resultados</h3>
+                        <p>Junio 2023</p>
+                        <div class="report-actions">
+                            <button class="report-btn view"><i class="fas fa-eye"></i> Ver</button>
+                            <button class="report-btn download"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="report-card">
+                    <div class="report-icon"><i class="fas fa-money-bill-alt"></i></div>
+                    <div class="report-content">
+                        <h3>Flujo de Caja</h3>
+                        <p>Semana 24 - 2023</p>
+                        <div class="report-actions">
+                            <button class="report-btn view"><i class="fas fa-eye"></i> Ver</button>
+                            <button class="report-btn download"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="report-card">
+                    <div class="report-icon"><i class="fas fa-receipt"></i></div>
+                    <div class="report-content">
+                        <h3>Reporte de Cobranza</h3>
+                        <p>Mayo 2023</p>
+                        <div class="report-actions">
+                            <button class="report-btn view"><i class="fas fa-eye"></i> Ver</button>
+                            <button class="report-btn download"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Integración de Sistemas -->
+        <section class="integration-section">
+            <div class="section-header">
+                <h2><i class="fas fa-plug"></i> Conectividad de Datos</h2>
+                <div class="integration-status">
+                    <span class="status-badge active"><i class="fas fa-check-circle"></i> Conectado</span>
+                    <span class="sync-time">Últ. sincronización: 10:45 AM</span>
+                </div>
+            </div>
+            <div class="integration-grid">
+                <div class="system-card connected">
+                    <div class="system-icon"><i class="fas fa-calculator"></i></div>
+                    <h3>Sistema Contable</h3>
+                    <p>Confianza: 92%</p>
+                    <div class="system-status">Conectado</div>
+                </div>
+                <div class="system-card connected">
+                    <div class="system-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h3>Facturación</h3>
+                    <p>Confianza: 88%</p>
+                    <div class="system-status">Conectado</div>
+                </div>
+                <div class="system-card warning">
+                    <div class="system-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h3>Cobranza</h3>
+                    <p>Confianza: 76%</p>
+                    <div class="system-status">Inestable</div>
+                </div>
+                <div class="system-card disconnected">
+                    <div class="system-icon"><i class="fas fa-exchange-alt"></i></div>
+                    <h3>Bancos</h3>
+                    <p>Confianza: 0%</p>
+                    <div class="system-status">Desconectado</div>
+                </div>
+            </div>
+        </section>
     </div>
+
+    <script>
+        // Gráfico de Flujo de Caja
+        const cashflowCtx = document.getElementById('cashflowChart').getContext('2d');
+        const cashflowChart = new Chart(cashflowCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+                datasets: [
+                    {
+                        label: 'Ingresos',
+                        data: [8500, 10200, 9800, 11500, 12500, 4500, 3450],
+                        backgroundColor: '#27ae60',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'Egresos',
+                        data: [-6200, -7500, -6800, -9200, -8500, -3000, -2500],
+                        backgroundColor: '#e74c3c',
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: false
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += new Intl.NumberFormat('es-VE', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Simular actualización de datos
+        document.querySelector('.refresh-btn').addEventListener('click', function() {
+            document.querySelector('.last-update').innerHTML = '<i class="fas fa-sync-alt"></i> Actualizando...';
+            setTimeout(() => {
+                document.querySelector('.last-update').innerHTML = '<i class="fas fa-sync-alt"></i> Actualizado ahora';
+            }, 1500);
+        });
+    </script>
 </body>
 </html>

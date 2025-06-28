@@ -3,18 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RRHH</title>
+    <title>Portal de Recursos Humanos | ConectaPlus</title>
     <link rel="stylesheet" href="rrhh.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Recursos Humanos</h1>
-        <div class="employee-list">
-            <div class="employee">
-                <p>Nombre: Ana López</p>
-                <button>Ver Detalles</button>
+    <div class="hr-container">
+        <!-- Header -->
+        <header class="hr-header">
+            <div class="welcome-banner">
+                <h1><i class="fas fa-users"></i> Portal de Recursos Humanos</h1>
+                <p class="time-saved"><i class="fas fa-clock"></i> <strong>25 horas</strong> ahorradas este mes en gestión manual</p>
             </div>
-        </div>
+            <div class="employee-search">
+                <input type="text" placeholder="Buscar empleado...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </header>
+
+        <!-- Dashboard de Gestión -->
+        <section class="management-dashboard">
+            <div class="dashboard-card">
+                <div class="card-icon pending">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Solicitudes Pendientes</h3>
+                    <div class="card-value">24</div>
+                    <div class="card-breakdown">
+                        <span><i class="fas fa-umbrella-beach"></i> 16 Vacaciones</span>
+                        <span><i class="fas fa-user-clock"></i> 8 Permisos</span>
+                    </div>
+                </div>
+                <button class="card-btn">Gestionar</button>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-icon completed">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Procesadas este Mes</h3>
+                    <div class="card-value">68</div>
+                    <div class="card-breakdown">
+                        <span><i class="fas fa-tachometer-alt"></i> 3.2 días promedio</span>
+                    </div>
+                </div>
+                <button class="card-btn">Ver Historial</button>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-icon digital">
+                    <i class="fas fa-folder-open"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Expedientes Digitalizados</h3>
+                    <div class="card-value">92%</div>
+                    <div class="card-breakdown">
+                        <span><i class="fas fa-sync-alt"></i> 8% en progreso</span>
+                    </div>
+                </div>
+                <button class="card-btn">Completar</button>
+            </div>
+        </section>
+
+        <!-- Autogestión para Empleados -->
+        <section class="self-service-section">
+            <h2><i class="fas fa-user-cog"></i> Portal de Autogestión</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon vacation">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3>Solicitud de Vacaciones</h3>
+                    <p>Proceso automatizado con aprobación en <strong>24-48 horas</strong></p>
+                    <button class="service-btn">Iniciar Solicitud</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon permission">
+                        <i class="fas fa-user-clock"></i>
+                    </div>
+                    <h3>Solicitud de Permisos</h3>
+                    <p>Resolución en <strong>1 día hábil</strong></p>
+                    <button class="service-btn">Solicitar Permiso</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon data">
+                        <i class="fas fa-user-edit"></i>
+                    </div>
+                    <h3>Actualizar Datos</h3>
+                    <p>Cambios inmediatos con validación automatizada</p>
+                    <button class="service-btn">Actualizar Ahora</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon documents">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Documentos Personales</h3>
+                    <p>Expediente digital completo</p>
+                    <button class="service-btn">Acceder</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gestión de Empleados -->
+        <section class="employee-management">
+            <div class="section-header">
+                <h2><i class="fas fa-id-card-alt"></i> Base Centralizada de Empleados</h2>
+                <div class="section-actions">
+                    <button class="primary-btn"><i class="fas fa-plus"></i> Nuevo Empleado</button>
+                    <button class="outline-btn"><i class="fas fa-file-export"></i> Exportar</button>
+                </div>
+            </div>
+
+            <div class="employee-filters">
+                <div class="filter-group">
+                    <label for="department"><i class="fas fa-building"></i> Departamento:</label>
+                    <select id="department">
+                        <option>Todos</option>
+                        <option>Atención al Cliente</option>
+                        <option>Facturación</option>
+                        <option>Tecnología</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="status"><i class="fas fa-user-check"></i> Estado:</label>
+                    <select id="status">
+                        <option>Activos</option>
+                        <option>Vacaciones</option>
+                        <option>Permisos</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="employee-table-container">
+                <table class="employee-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>ID</th>
+                            <th>Departamento</th>
+                            <th>Puesto</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="employee-avatar">MG</div>
+                                <span>María González</span>
+                            </td>
+                            <td>EMP-2045</td>
+                            <td>Atención al Cliente</td>
+                            <td>Supervisora</td>
+                            <td><span class="status-badge active">Activo</span></td>
+                            <td>
+                                <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="employee-avatar">JP</div>
+                                <span>Juan Pérez</span>
+                            </td>
+                            <td>EMP-1987</td>
+                            <td>Facturación</td>
+                            <td>Analista</td>
+                            <td><span class="status-badge vacation">Vacaciones</span></td>
+                            <td>
+                                <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="employee-avatar">CM</div>
+                                <span>Carlos Mendoza</span>
+                            </td>
+                            <td>EMP-2103</td>
+                            <td>Tecnología</td>
+                            <td>Desarrollador</td>
+                            <td><span class="status-badge permission">Permiso Médico</span></td>
+                            <td>
+                                <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Digitalización de Expedientes -->
+        <section class="digital-records">
+            <div class="section-header">
+                <h2><i class="fas fa-archive"></i> Expedientes Digitales</h2>
+                <div class="upload-section">
+                    <button class="upload-btn"><i class="fas fa-cloud-upload-alt"></i> Subir Documentos</button>
+                    <div class="upload-info">
+                        <i class="fas fa-info-circle"></i> Formatos: PDF, JPG, PNG (Máx. 10MB)
+                    </div>
+                </div>
+            </div>
+
+            <div class="records-grid">
+                <div class="record-card">
+                    <div class="record-icon"><i class="fas fa-file-contract"></i></div>
+                    <div class="record-info">
+                        <h3>Contrato Laboral</h3>
+                        <p>Últ. actualización: 15/03/2023</p>
+                        <div class="record-actions">
+                            <button class="record-btn"><i class="fas fa-eye"></i> Ver</button>
+                            <button class="record-btn"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="record-card">
+                    <div class="record-icon"><i class="fas fa-id-card"></i></div>
+                    <div class="record-info">
+                        <h3>Documentos de Identidad</h3>
+                        <p>Completado: 4/5 documentos</p>
+                        <div class="record-actions">
+                            <button class="record-btn"><i class="fas fa-eye"></i> Ver</button>
+                            <button class="record-btn"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="record-card">
+                    <div class="record-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="record-info">
+                        <h3>Títulos y Certificados</h3>
+                        <p>3 documentos subidos</p>
+                        <div class="record-actions">
+                            <button class="record-btn"><i class="fas fa-eye"></i> Ver</button>
+                            <button class="record-btn"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </body>
 </html>

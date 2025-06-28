@@ -3,18 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercadeo</title>
+    <title>Dashboard de Mercadeo | ConectaPlus</title>
     <link rel="stylesheet" href="mercadeo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Mercadeo y Ventas</h1>
-        <div class="campaigns">
-            <div class="campaign">
-                <h3>Campaña Verano</h3>
-                <button>Analizar</button>
+    <div class="marketing-container">
+        <!-- Header -->
+        <header class="marketing-header">
+            <div class="header-content">
+                <h1><i class="fas fa-bullseye"></i> Dashboard de Mercadeo</h1>
+                <div class="header-actions">
+                    <div class="time-filters">
+                        <button class="time-btn active">Hoy</button>
+                        <button class="time-btn">Semana</button>
+                        <button class="time-btn">Mes</button>
+                    </div>
+                    <button class="refresh-btn"><i class="fas fa-sync-alt"></i></button>
+                </div>
             </div>
-        </div>
+            <div class="last-update">
+                <i class="fas fa-circle"></i> Datos actualizados al 29/06/2023 16:30
+            </div>
+        </header>
+
+        <!-- KPIs Principales -->
+        <section class="main-kpis">
+            <div class="kpi-row">
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-icon"><i class="fas fa-funnel-dollar"></i></span>
+                        <span class="kpi-title">Tasa Conversión</span>
+                    </div>
+                    <div class="kpi-value">12.8%</div>
+                    <div class="kpi-change positive">
+                        <i class="fas fa-arrow-up"></i> 2.5% vs período anterior
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-icon"><i class="fas fa-users"></i></span>
+                        <span class="kpi-title">Leads Nuevos</span>
+                    </div>
+                    <div class="kpi-value">248</div>
+                    <div class="kpi-change negative">
+                        <i class="fas fa-arrow-down"></i> 8% vs meta
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-icon"><i class="fas fa-chart-line"></i></span>
+                        <span class="kpi-title">ROI Campañas</span>
+                    </div>
+                    <div class="kpi-value">3.8x</div>
+                    <div class="kpi-change positive">
+                        <i class="fas fa-arrow-up"></i> 0.7x mejoría
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Embudo de Conversión -->
+        <section class="funnel-section">
+            <div class="section-header">
+                <h2><i class="fas fa-filter"></i> Embudo de Conversión</h2>
+                <select class="campaign-select">
+                    <option>Todas las campañas</option>
+                    <option>Email Marketing</option>
+                    <option>Redes Sociales</option>
+                    <option>Google Ads</option>
+                </select>
+            </div>
+            <div class="funnel-container">
+                <canvas id="conversionFunnel"></canvas>
+            </div>
+            <div class="funnel-stats">
+                <div class="funnel-stat">
+                    <div class="stat-value">1,248</div>
+                    <div class="stat-label">Leads</div>
+                </div>
+                <div class="funnel-stat">
+                    <div class="stat-value">624</div>
+                    <div class="stat-label">Calificados</div>
+                </div>
+                <div class="funnel-stat">
+                    <div class="stat-value">312</div>
+                    <div class="stat-label">Propuestas</div>
+                </div>
+                <div class="funnel-stat">
+                    <div class="stat-value">160</div>
+                    <div class="stat-label">Clientes</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Campañas y Segmentación -->
+        <section class="campaigns-section">
+            <div class="section-header">
+                <h2><i class="fas fa-envelope-open-text"></i> Desempeño de Campañas</h2>
+                <button class="new-campaign-btn"><i class="fas fa-plus"></i> Nueva Campaña</button>
+            </div>
+            
+            <div class="campaigns-grid">
+                <div class="campaign-card">
+                    <div class="campaign-header">
+                        <h3>Campaña de Verano 2023</h3>
+                        <span class="campaign-status active">Activa</span>
+                    </div>
+                    <div class="campaign-metrics">
+                        <div class="metric">
+                            <div class="metric-value">24.5%</div>
+                            <div class="metric-label">Tasa apertura</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">8.7%</div>
+                            <div class="metric-label">CTR</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">4.2x</div>
+                            <div class="metric-label">ROI</div>
+                        </div>
+                    </div>
+                    <div class="campaign-progress">
+                        <div class="progress-bar" style="width: 65%;"></div>
+                    </div>
+                    <div class="campaign-footer">
+                        <span>65% completado</span>
+                        <button class="campaign-details-btn">Detalles</button>
+                    </div>
+                </div>
+
+                <div class="campaign-card">
+                    <div class="campaign-header">
+                        <h3>Promo Black Friday</h3>
+                        <span class="campaign-status upcoming">Próxima</span>
+                    </div>
+                    <div class="campaign-metrics">
+                        <div class="metric">
+                            <div class="metric-value">-</div>
+                            <div class="metric-label">Tasa apertura</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">-</div>
+                            <div class="metric-label">CTR</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">-</div>
+                            <div class="metric-label">ROI</div>
+                        </div>
+                    </div>
+                    <div class="campaign-progress">
+                        <div class="progress-bar" style="width: 15%;"></div>
+                    </div>
+                    <div class="campaign-footer">
+                        <span>Inicia en 12 días</span>
+                        <button class="campaign-details-btn">Configurar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Segmentación de Clientes -->
+        <section class="segmentation-section">
+            <div class="section-header">
+                <h2><i class="fas fa-users-cog"></i> Segmentación de Clientes</h2>
+                <button class="export-btn"><i class="fas fa-download"></i> Exportar</button>
+            </div>
+            
+            <div class="segmentation-content">
+                <div class="segmentation-chart">
+                    <canvas id="customerSegmentation"></canvas>
+                </div>
+                <div class="segmentation-details">
+                    <div class="segment-card">
+                        <div class="segment-color" style="background-color: #3498db;"></div>
+                        <div class="segment-info">
+                            <div class="segment-name">Clientes Premium</div>
+                            <div class="segment-value">24% (312)</div>
+                        </div>
+                    </div>
+                    <div class="segment-card">
+                        <div class="segment-color" style="background-color: #2ecc71;"></div>
+                        <div class="segment-info">
+                            <div class="segment-name">Clientes Recurrentes</div>
+                            <div class="segment-value">38% (498)</div>
+                        </div>
+                    </div>
+                    <div class="segment-card">
+                        <div class="segment-color" style="background-color: #f39c12;"></div>
+                        <div class="segment-info">
+                            <div class="segment-name">Clientes Nuevos</div>
+                            <div class="segment-value">22% (288)</div>
+                        </div>
+                    </div>
+                    <div class="segment-card">
+                        <div class="segment-color" style="background-color: #e74c3c;"></div>
+                        <div class="segment-info">
+                            <div class="segment-name">Clientes Inactivos</div>
+                            <div class="segment-value">16% (210)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interacciones Recientes -->
+        <section class="interactions-section">
+            <div class="section-header">
+                <h2><i class="fas fa-comments"></i> Interacciones Recientes</h2>
+                <button class="view-all">Ver todas</button>
+            </div>
+            
+            <div class="interactions-list">
+                <div class="interaction-card">
+                    <div class="interaction-header">
+                        <div class="customer-info">
+                            <div class="customer-avatar">JL</div>
+                            <div class="customer-name">Juan López</div>
+                        </div>
+                        <div class="interaction-time">Hace 2 horas</div>
+                    </div>
+                    <div class="interaction-content">
+                        <div class="interaction-type email">
+                            <i class="fas fa-envelope"></i> Email
+                        </div>
+                        <div class="interaction-details">
+                            <p>Consultó sobre nuevos productos de la línea empresarial</p>
+                            <div class="interaction-tags">
+                                <span class="tag">Interesado</span>
+                                <span class="tag">Empresas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interaction-card">
+                    <div class="interaction-header">
+                        <div class="customer-info">
+                            <div class="customer-avatar">MP</div>
+                            <div class="customer-name">María Pérez</div>
+                        </div>
+                        <div class="interaction-time">Ayer 15:30</div>
+                    </div>
+                    <div class="interaction-content">
+                        <div class="interaction-type call">
+                            <i class="fas fa-phone"></i> Llamada
+                        </div>
+                        <div class="interaction-details">
+                            <p>Solicitó cotización para servicio premium</p>
+                            <div class="interaction-tags">
+                                <span class="tag">Oportunidad</span>
+                                <span class="tag">Premium</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
+
+    <script>
+        // Gráfico de Embudo de Conversión
+        const funnelCtx = document.getElementById('conversionFunnel').getContext('2d');
+        new Chart(funnelCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Leads', 'Calificados', 'Propuestas', 'Clientes'],
+                datasets: [{
+                    data: [1248, 624, 312, 160],
+                    backgroundColor: [
+                        'rgba(52, 152, 219, 0.7)',
+                        'rgba(155, 89, 182, 0.7)',
+                        'rgba(241, 196, 15, 0.7)',
+                        'rgba(46, 204, 113, 0.7)'
+                    ],
+                    borderColor: [
+                        '#3498db',
+                        '#9b59b6',
+                        '#f1c40f',
+                        '#2ecc71'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                indexAxis: 'y',
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Gráfico de Segmentación
+        const segCtx = document.getElementById('customerSegmentation').getContext('2d');
+        new Chart(segCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Premium', 'Recurrentes', 'Nuevos', 'Inactivos'],
+                datasets: [{
+                    data: [312, 498, 288, 210],
+                    backgroundColor: [
+                        '#3498db',
+                        '#2ecc71',
+                        '#f39c12',
+                        '#e74c3c'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                cutout: '70%'
+            }
+        });
+
+        // Botón de actualización
+        document.querySelector('.refresh-btn').addEventListener('click', function() {
+            document.querySelector('.last-update').innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> Actualizando...';
+            setTimeout(() => {
+                document.querySelector('.last-update').innerHTML = '<i class="fas fa-circle"></i> Datos actualizados ahora';
+            }, 1500);
+        });
+    </script>
 </body>
 </html>

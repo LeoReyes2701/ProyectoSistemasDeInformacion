@@ -1,16 +1,195 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servicio al Cliente</title>
-  <link rel="stylesheet" href="atencion-al-cliente.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atención al Cliente | Vista Unificada</title>
+    <link rel="stylesheet" href="atencion-al-cliente.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <div class="service-container">
-    <h1>Bienvenido al Área de Servicio al Cliente</h1>
-    <p>Aquí puedes gestionar todas las solicitudes de clientes.</p>
-    <!-- Añade aquí el contenido específico de tu área -->
-  </div>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <h1><i class="fas fa-headset"></i> Vista Unificada del Cliente</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar cliente...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </header>
+
+        <!-- Client Profile -->
+        <section class="client-profile">
+            <div class="profile-header">
+                <div class="avatar">JL</div>
+                <div class="client-info">
+                    <h2>Juan López <span class="badge active">Activo</span></h2>
+                    <p><i class="fas fa-envelope"></i> juan.lopez@email.com | <i class="fas fa-phone"></i> +58 412 5551234</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Caracas, Venezuela</p>
+                </div>
+                <div class="client-actions">
+                    <button class="btn-primary"><i class="fas fa-edit"></i> Editar</button>
+                    <button class="btn-secondary"><i class="fas fa-plus"></i> Nuevo Ticket</button>
+                </div>
+            </div>
+
+            <!-- Unified View Tabs -->
+            <div class="unified-view">
+                <nav class="view-tabs">
+                    <button class="tab active" data-tab="tickets"><i class="fas fa-ticket-alt"></i> Tickets</button>
+                    <button class="tab" data-tab="billing"><i class="fas fa-file-invoice-dollar"></i> Facturación</button>
+                    <button class="tab" data-tab="services"><i class="fas fa-wifi"></i> Servicios</button>
+                    <button class="tab" data-tab="notes"><i class="fas fa-sticky-note"></i> Notas</button>
+                </nav>
+
+                <!-- Tab Content -->
+                <div class="tab-content active" id="tickets">
+                    <div class="section-header">
+                        <h3><i class="fas fa-history"></i> Historial de Tickets</h3>
+                        <select class="filter-select">
+                            <option>Últimos 30 días</option>
+                            <option>Últimos 3 meses</option>
+                            <option>Todos</option>
+                        </select>
+                    </div>
+                    <div class="ticket-list">
+                        <!-- Ticket Item -->
+                        <div class="ticket-item">
+                            <div class="ticket-header">
+                                <span class="ticket-id">#TKT-2023-056</span>
+                                <span class="ticket-status resolved">Resuelto</span>
+                                <span class="ticket-date">15/06/2023</span>
+                            </div>
+                            <p class="ticket-summary">Problema con conexión de internet - Zona El Marqués</p>
+                            <div class="ticket-footer">
+                                <span><i class="fas fa-user-tie"></i> Asignado a: María González</span>
+                                <button class="btn-small"><i class="fas fa-eye"></i> Ver Detalles</button>
+                            </div>
+                        </div>
+
+                        <!-- Ticket Item -->
+                        <div class="ticket-item urgent">
+                            <div class="ticket-header">
+                                <span class="ticket-id">#TKT-2023-042</span>
+                                <span class="ticket-status pending">Pendiente</span>
+                                <span class="ticket-date">02/06/2023</span>
+                            </div>
+                            <p class="ticket-summary">Solicitud de cambio de plan a fibra óptica</p>
+                            <div class="ticket-footer">
+                                <span><i class="fas fa-user-tie"></i> Asignado a: Carlos Mendoza</span>
+                                <button class="btn-small"><i class="fas fa-eye"></i> Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Billing Tab (Hidden by default) -->
+                <div class="tab-content" id="billing">
+                    <div class="section-header">
+                        <h3><i class="fas fa-receipt"></i> Historial de Facturación</h3>
+                    </div>
+                    <div class="billing-summary">
+                        <div class="summary-card">
+                            <h4>Balance Actual</h4>
+                            <p class="amount">$ 245.50 <span class="success">(Al día)</span></p>
+                        </div>
+                        <div class="summary-card">
+                            <h4>Próximo Vencimiento</h4>
+                            <p class="amount">$ 85.00 <span class="warning">(05/07/2023)</span></p>
+                        </div>
+                    </div>
+                    <table class="billing-table">
+                        <thead>
+                            <tr>
+                                <th>Factura #</th>
+                                <th>Fecha</th>
+                                <th>Monto</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>FAC-2023-154</td>
+                                <td>05/06/2023</td>
+                                <td>$ 85.00</td>
+                                <td><span class="badge paid">Pagada</span></td>
+                                <td><button class="btn-icon"><i class="fas fa-download"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>FAC-2023-128</td>
+                                <td>05/05/2023</td>
+                                <td>$ 85.00</td>
+                                <td><span class="badge paid">Pagada</span></td>
+                                <td><button class="btn-icon"><i class="fas fa-download"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Services Tab (Hidden by default) -->
+                <div class="tab-content" id="services">
+                    <div class="section-header">
+                        <h3><i class="fas fa-sliders-h"></i> Servicios Activos</h3>
+                    </div>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon internet"></div>
+                            <h4>Internet Residencial</h4>
+                            <p>Plan Fibra 100 Mbps</p>
+                            <p class="service-status active">Activo desde: 12/03/2021</p>
+                            <button class="btn-small">Gestionar</button>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon tv"></div>
+                            <h4>Televisión Digital</h4>
+                            <p>Plan Básico (120 canales)</p>
+                            <p class="service-status active">Activo desde: 12/03/2021</p>
+                            <button class="btn-small">Gestionar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notes Tab (Hidden by default) -->
+                <div class="tab-content" id="notes">
+                    <div class="section-header">
+                        <h3><i class="fas fa-clipboard"></i> Notas Internas</h3>
+                        <button class="btn-primary"><i class="fas fa-plus"></i> Nueva Nota</button>
+                    </div>
+                    <div class="notes-list">
+                        <div class="note-item">
+                            <div class="note-header">
+                                <span class="note-author">Carlos Mendoza</span>
+                                <span class="note-date">10/06/2023</span>
+                            </div>
+                            <p class="note-content">Cliente solicita upgrade a fibra óptica cuando esté disponible en su zona. Prometió llamar en septiembre para consultar.</p>
+                            <div class="note-tags">
+                                <span class="tag">Seguimiento</span>
+                                <span class="tag">Upgrade</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and content
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>

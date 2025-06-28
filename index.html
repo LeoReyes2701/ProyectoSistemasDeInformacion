@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | ConectaPlus</title>
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="login-container">
+    <!-- Sección de imagen -->
+    <div class="login-image"></div>
+    
+    <!-- Sección de formulario -->
+    <div class="login-form">
+      <div class="login-header">
+        <h1>Iniciar Sesión</h1>
+        <p>Ingresa tus credenciales para acceder al sistema</p>
+      </div>
+      
+      <form>
+        <div class="input-group">
+          <label for="email">CORREO ELECTRÓNICO</label>
+          <input type="email" id="email" placeholder="tu@email.com" required>
+        </div>
+        
+        <div class="input-group">
+          <label for="password">CONTRASEÑA</label>
+          <input type="password" id="password" placeholder="••••••••" required>
+        </div>
+        
+        <div class="input-group">
+          <label for="role">ROL</label>
+          <select id="role" required>
+            <option value="" disabled selected>Selecciona tu rol</option>
+            <option value="atencion">Atención al Cliente</option>
+            <option value="facturacion">Facturación de los Servicios</option>
+            <option value="financiera">Gestión Financiera</option>
+            <option value="rrhh">Gestión de Recursos Humanos</option>
+            <option value="formacion">Gestión de Formación de Empleados</option>
+            <option value="gerencial">Gestión de Información Gerencial</option>
+            <option value="mercadeo">Mercadeo y Ventas</option>
+          </select>
+        </div>
+        
+        <div class="signin-button-container">
+          <button type="button" class="signin-button" onclick="login()">
+            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const role = document.getElementById('role').value;
+      
+      // if (!email || !password || !role) {
+      //   alert('Por favor complete todos los campos');
+      //   return;
+      // }
+      
+      sessionStorage.setItem('userRole', role);
+      console.log('Rol guardado:', role);
+
+      if (document.getElementById('role').selectedIndex !== 0) {
+        window.location.href = '../verification/index.html';
+      } else {
+        alert('Por favor seleccione un rol válido');
+      }
+    }
+  </script>
+</body>
+</html>

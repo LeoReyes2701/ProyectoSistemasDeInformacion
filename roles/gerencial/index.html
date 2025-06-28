@@ -3,18 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerencial</title>
+    <title>Dashboard Gerencial | ConectaPlus</title>
     <link rel="stylesheet" href="gerencial.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Información Gerencial</h1>
-        <div class="reports">
-            <div class="report">
-                <h3>Reporte Trimestral</h3>
-                <button>Generar</button>
+    <div class="gerencial-container">
+        <!-- Header -->
+        <header class="gerencial-header">
+            <div class="header-content">
+                <h1><i class="fas fa-chess-king"></i> Panel Gerencial</h1>
+                <div class="header-actions">
+                    <div class="time-filters">
+                        <button class="time-btn active">Hoy</button>
+                        <button class="time-btn">Esta semana</button>
+                        <button class="time-btn">Este mes</button>
+                    </div>
+                    <button class="refresh-btn"><i class="fas fa-sync-alt"></i></button>
+                </div>
             </div>
-        </div>
+            <div class="last-update">
+                <i class="fas fa-circle"></i> Datos actualizados al 29/06/2023 15:45
+            </div>
+        </header>
+
+        <!-- KPIs principales -->
+        <section class="main-kpis">
+            <div class="kpi-row">
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-icon"><i class="fas fa-chart-line"></i></span>
+                        <span class="kpi-title">Ventas Totales</span>
+                    </div>
+                    <div class="kpi-value">$1,287,450</div>
+                    <div class="kpi-change positive">
+                        <i class="fas fa-arrow-up"></i> 8.2% vs período anterior
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-icon"><i class="fas fa-stopwatch"></i></span>
+                        <span class="kpi-title">Tiempo Respuesta</span>
+                    </div>
+                    <div class="kpi-value">2.4 horas</div>
+                    <div class="kpi-change negative">
+                        <i class="fas fa-arrow-down"></i> 12% vs meta
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-icon"><i class="fas fa-percentage"></i></span>
+                        <span class="kpi-title">Eficiencia Oper.</span>
+                    </div>
+                    <div class="kpi-value">78%</div>
+                    <div class="kpi-change neutral">
+                        <i class="fas fa-equals"></i> Estable
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gráficos principales -->
+        <section class="main-charts">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3><i class="fas fa-dollar-sign"></i> Tendencia de Ventas</h3>
+                    <select class="chart-select">
+                        <option>Últimas 8 semanas</option>
+                        <option>Comparativo anual</option>
+                    </select>
+                </div>
+                <div class="chart-container">
+                    <canvas id="salesChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3><i class="fas fa-fire"></i> Puntos Críticos</h3>
+                    <select class="chart-select" id="heatmapFilter">
+                        <option value="dept">Por departamento</option>
+                        <option value="region">Por región</option>
+                    </select>
+                </div>
+                <div class="chart-container">
+                    <canvas id="heatmapChart"></canvas>
+                </div>
+                <div class="heatmap-legend">
+                    <div class="legend-item"><span class="legend-color" style="background: #27ae60;"></span> Óptimo</div>
+                    <div class="legend-item"><span class="legend-color" style="background: #f39c12;"></span> Alerta</div>
+                    <div class="legend-item"><span class="legend-color" style="background: #e74c3c;"></span> Crítico</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alertas y acciones -->
+        <section class="alerts-section">
+            <div class="section-header">
+                <h2><i class="fas fa-bell"></i> Alertas Prioritarias</h2>
+                <button class="view-all">Ver todas</button>
+            </div>
+            
+            <div class="alerts-grid">
+                <div class="alert-card critical">
+                    <div class="alert-icon">
+                        <i class="fas fa-exclamation"></i>
+                    </div>
+                    <div class="alert-content">
+                        <h3>Caída en ventas región norte</h3>
+                        <p>15% bajo el promedio semanal</p>
+                        <div class="alert-time">Detectado hoy 09:30 AM</div>
+                    </div>
+                </div>
+
+                <div class="alert-card warning">
+                    <div class="alert-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="alert-content">
+                        <h3>Aumento tiempo de respuesta</h3>
+                        <p>Soporte técnico +25min</p>
+                        <div class="alert-time">Tendencia de 3 días</div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
+
+    <script>
+        // Gráfico de Ventas
+        const salesCtx = document.getElementById('salesChart').getContext('2d');
+        new Chart(salesCtx, {
+            type: 'line',
+            data: {
+                labels: ['Sem 18', 'Sem 19', 'Sem 20', 'Sem 21', 'Sem 22', 'Sem 23', 'Sem 24', 'Sem 25'],
+                datasets: [{
+                    label: 'Ventas',
+                    data: [320000, 350000, 380000, 410000, 390000, 420000, 450000, 430000],
+                    borderColor: '#2c3e50',
+                    backgroundColor: 'rgba(44, 62, 80, 0.1)',
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // Heatmap Data
+        const heatmapData = {
+            dept: {
+                labels: ['Ventas', 'Soporte', 'Logística', 'Finanzas'],
+                datasets: [
+                    {
+                        label: 'Eficiencia',
+                        data: [78, 65, 52, 88],
+                        backgroundColor: ['#27ae60', '#f39c12', '#e74c3c', '#27ae60'],
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Tiempo Respuesta',
+                        data: [2.4, 3.1, 4.8, 1.5],
+                        backgroundColor: ['#f39c12', '#e74c3c', '#e74c3c', '#27ae60'],
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Costos',
+                        data: [10, 18, 25, 5],
+                        backgroundColor: ['#27ae60', '#f39c12', '#e74c3c', '#27ae60'],
+                        borderWidth: 1
+                    }
+                ]
+            },
+            region: {
+                labels: ['Norte', 'Sur', 'Este', 'Oeste'],
+                datasets: [
+                    {
+                        label: 'Eficiencia',
+                        data: [72, 80, 68, 75],
+                        backgroundColor: ['#f39c12', '#27ae60', '#f39c12', '#27ae60'],
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Tiempo Respuesta',
+                        data: [2.8, 1.9, 3.2, 2.1],
+                        backgroundColor: ['#e74c3c', '#27ae60', '#e74c3c', '#27ae60'],
+                        borderWidth: 1
+                    }
+                ]
+            }
+        };
+
+        // Heatmap Config
+        const heatmapConfig = {
+            type: 'bar',
+            data: heatmapData.dept,
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Valor'
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) label += ': ';
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y + (context.dataset.label === 'Tiempo Respuesta' ? 'h' : '%');
+                                }
+                                return label;
+                            }
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        };
+
+        // Initialize Heatmap
+        const heatmapCtx = document.getElementById('heatmapChart').getContext('2d');
+        const heatmapChart = new Chart(heatmapCtx, heatmapConfig);
+
+        // Filter Change
+        document.getElementById('heatmapFilter').addEventListener('change', function() {
+            const viewType = this.value;
+            heatmapChart.data = heatmapData[viewType];
+            heatmapChart.update();
+        });
+
+        // Botón de actualización
+        document.querySelector('.refresh-btn').addEventListener('click', function() {
+            document.querySelector('.last-update').innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> Actualizando...';
+            setTimeout(() => {
+                document.querySelector('.last-update').innerHTML = '<i class="fas fa-circle"></i> Datos actualizados ahora';
+            }, 1500);
+        });
+    </script>
 </body>
 </html>
