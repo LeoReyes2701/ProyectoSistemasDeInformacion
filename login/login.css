@@ -20,13 +20,13 @@ body {
 /* Sección de imagen (puedes reemplazar la URL) */
 .login-image {
   flex: 1; /* Ocupa la mitad del contenedor padre */
-  background-image: url('Imagenes/3ffebf9cb953a5eceb48bfd2d54db8a2.jpg'); /* Ruta de tu imagen */
+  background-image: url('../Imagenes/3ffebf9cb953a5eceb48bfd2d54db8a2.jpg'); /* Ruta de tu imagen */
   background-repeat: no-repeat;    /* Evita repetición */
   background-position: center;    /* Centra la imagen */
   background-size: cover;         /* Cubre todo el espacio sin deformar */
   min-height: 500px;             /* Altura mínima */
   border-radius: 15px 0 0 15px;  /* Esquinas redondeadas solo a la izquierda */
-  padding-top: 1cm;
+  
 }
 
 /* Sección de formulario */

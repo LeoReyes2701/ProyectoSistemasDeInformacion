@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificando</title>
+  <link rel="stylesheet" href="verification.css">
+</head>
+<body>
+  <div class="verification-container">
+    <div class="spinner"></div>
+    <h1>Verificando credenciales...</h1>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      const role = sessionStorage.getItem('userRole');
+      let redirectPage = '';
+      
+      switch(role) {
+        case 'atencion':
+          redirectPage = '/roles/atencion-al-cliente/index.html';
+          break;
+        case 'facturacion':
+          redirectPage = '/roles/facturacion/index.html';
+          break;
+        case 'financiera':
+          redirectPage = '/roles/financiera/index.html';
+          break;
+        case 'rrhh':
+          redirectPage = '/roles/rrhh/index.html';
+          break;
+        case 'formacion':
+          redirectPage = '/roles/formacion/index.html';
+          break;
+        case 'gerencial':
+          redirectPage = '/roles/gerencial/index.html';
+          break;
+        case 'mercadeo':
+          redirectPage = '/roles/mercadeo/index.html';
+          break;
+        default:
+          redirectPage = '/login/index.html';
+      }
+      
+      window.location.href = redirectPage;
+    }, 1000); // 3 segundos
+  </script>
+</body>
+</html>
+
