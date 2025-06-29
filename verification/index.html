@@ -15,32 +15,33 @@
   <script>
     setTimeout(() => {
       const role = sessionStorage.getItem('userRole');
+      let repoBase = '/ProyectoSistemasDeInformacion/roles/';
       let redirectPage = '';
       
       switch(role) {
         case 'atencion':
-          redirectPage = '../roles/atencion-al-cliente/index.html';
+          redirectPage = repoBase + 'atencion-al-cliente/index.html';
           break;
         case 'facturacion':
-          redirectPage = '../roles/facturacion/index.html';
+          redirectPage = repoBase + 'facturacion/index.html';
           break;
         case 'financiera':
-          redirectPage = '../roles/financiera/index.html';
+          redirectPage = repoBase + 'financiera/index.html';
           break;
         case 'rrhh':
-          redirectPage = '../roles/rrhh/index.html';
+          redirectPage = repoBase + 'rrhh/index.html';
           break;
         case 'formacion':
-          redirectPage = '../roles/formacion/index.html';
+          redirectPage = repoBase + 'formacion/index.html';
           break;
         case 'gerencial':
-          redirectPage = '../roles/gerencial/index.html';
+          redirectPage = repoBase + 'gerencial/index.html';
           break;
         case 'mercadeo':
-          redirectPage = '../roles/mercadeo/index.html';
+          redirectPage = repoBase + 'mercadeo/index.html';
           break;
         default:
-          redirectPage = '../index.html';
+          redirectPage = '/ProyectoSistemasDeInformacion/index.html';
       }
       
       window.location.href = redirectPage;
